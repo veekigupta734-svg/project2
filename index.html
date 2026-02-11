@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Login Form</title>
+
+<style>
+body{
+    font-family: Arial, sans-serif;
+    background:#f2f2f2;
+
+    /* FLEX CENTER */
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    height:100vh;
+}
+
+.container{
+    background:white;
+    padding:30px;
+    border-radius:10px;
+    box-shadow:0 0 10px rgba(0,0,0,0.2);
+    width:300px;
+}
+
+h2{
+    text-align:center;
+    margin-bottom:20px;
+}
+
+form{
+    display:flex;
+    flex-direction:column;
+}
+
+input{
+    padding:8px;
+    margin-top:5px;
+    margin-bottom:15px;
+    border:1px solid #ccc;
+    border-radius:5px;
+}
+
+button{
+    padding:10px;
+    background:#007bff;
+    color:white;
+    border:none;
+    border-radius:5px;
+    cursor:pointer;
+}
+
+button:hover{
+    background:#0056b3;
+}
+
+#error{
+    text-align:center;
+    margin-bottom:10px;
+    font-weight:bold;
+    color:red;
+}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+    <h2>Login</h2>
+    <div id="error"></div>
+
+    <form id="login-form">
+        <label>Name</label>
+        <input type="text" id="name">
+
+        <label>Password</label>
+        <input type="password" id="password">
+
+        <button type="submit">Login</button>
+    </form>
+</div>
+
+<script>
+document.getElementById("login-form").addEventListener("submit", function(e){
+
+    e.preventDefault();
+
+    let name = document.getElementById("name").value;
+    let pass = document.getElementById("password").value;
+    let error = document.getElementById("error");
+
+    error.style.color="red";
+    error.innerText="";
+
+    if(name === ""){
+        error.innerText="Enter name";
+    }
+    else if(pass === ""){
+        error.innerText="Enter password";
+    }
+    else if(pass.length < 4){
+        error.innerText="Password must be 4+ characters";
+    }
+    else{
+        error.style.color="green";
+        error.innerText="Login Successful";
+    }
+
+});
+</script>
+
+</body>
+</html>
